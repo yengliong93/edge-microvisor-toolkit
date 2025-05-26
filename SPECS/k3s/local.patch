@@ -1,0 +1,12 @@
+diff --git a/Dockerfile.local b/Dockerfile.local
+index 74ea8d7bd1..f90f09c9a0 100644
+--- a/Dockerfile.local
++++ b/Dockerfile.local
+@@ -47,7 +47,6 @@ RUN --mount=type=cache,id=gomod,target=/go/pkg/mod \
+ 
+ COPY ./cmd ./cmd
+ COPY ./tests ./tests
+-COPY ./.git ./.git
+ COPY ./pkg ./pkg
+ RUN --mount=type=cache,id=gomod,target=/go/pkg/mod \
+     --mount=type=cache,id=gobuild,target=/root/.cache/go-build \
