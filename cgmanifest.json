@@ -8310,6 +8310,16 @@
       "component": {
         "type": "other",
         "other": {
+          "name": "k3s",
+          "version": "v1.32.4+k3s1",
+          "downloadUrl": "https://github.com/k3s-io/k3s/archive/refs/tags/v1.32.4+k3s1.tar.gz"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "other",
+        "other": {
           "name": "kata-containers",
           "version": "3.2.0.azl5",
           "downloadUrl": "https://github.com/microsoft/kata-containers/archive/refs/tags/3.2.0.azl5.tar.gz"
