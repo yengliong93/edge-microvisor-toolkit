@@ -1,6 +1,6 @@
 {
     "Signatures": {
-        "v1.30.10+k3s1.tar.gz": "a9bd52268b4cbbaefb7ed41d50b44dd4912af07c4ba00c53013beea7135cd204",
-        "k3s-airgap-images-amd64.tar.zst": "a467622184402c9a59cfcee596237120fb138bb65d781741592164c09ae64618"
+        "v1.32.4+k3s1.tar.gz": "69ae56c0edb0390f9e98b7b93955f4e066165bf9800b9ce41ed489e8410f9ce6",
+        "k3s-airgap-images-amd64.tar.zst": "2c27bf09b90459947dff497ca5028adefa8f8f3d2ae96a3164c11b8a5ed3bb86"
     }
 }

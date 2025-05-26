@@ -1,6 +1,6 @@
 Summary:        K3s - Lightweight Kubernetes
 Name:           k3s
-Version:        v1.30.10+k3s1
+Version:        v1.32.4+k3s1
 Release:        1%{?dist}
 License:        ASL 2.0
 URL:            https://k3s.io/
