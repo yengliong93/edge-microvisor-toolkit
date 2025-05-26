@@ -1,8 +1,11 @@
-Summary:        K3s - Lightweight Kubernetes
 Name:           k3s
+Summary:        K3s - Lightweight Kubernetes
 Version:        v1.32.4+k3s1
 Release:        1%{?dist}
 License:        ASL 2.0
+Vendor:         Cloud Native Computing Foundation
+Distribution:   Edge Microvisor Toolkit
+Group:          System Environment/Base
 URL:            https://k3s.io/
 Source0: https://github.com/k3s-io/k3s/archive/refs/tags/%{version}.tar.gz
 Source1: https://github.com/k3s-io/k3s/releases/download/%{version}/k3s-airgap-images-amd64.tar.zst
