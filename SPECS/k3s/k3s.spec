@@ -3,7 +3,7 @@ Summary:        K3s - Lightweight Kubernetes
 Version:        v1.32.4+k3s1
 Release:        1%{?dist}
 License:        ASL 2.0
-Vendor:         Cloud Native Computing Foundation
+Vendor:         Intel Corporation
 Distribution:   Edge Microvisor Toolkit
 Group:          System Environment/Base
 URL:            https://k3s.io/
