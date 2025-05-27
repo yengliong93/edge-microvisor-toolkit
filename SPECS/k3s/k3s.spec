@@ -16,9 +16,6 @@ BuildRequires: docker
 %description
 K3s - Lightweight Kubernetes %{version}
 
-%package        k3s
-Summary:        K3s - Lightweight Kubernetes
-
 %prep
 %autosetup -Sgit
 
@@ -36,10 +33,33 @@ install -m 0755 install.sh %{topdir}/opt/install.sh
 mkdir -p %{topdir}/var/lib/rancher/k3s/agent/images
 install -m 0644 %{SOURCE1} %{topdir}/var/lib/rancher/k3s/agent/images/k3s-airgap-images-amd64.tar.zst
 
-%post
-%{topdir}/opt/install.sh
-
 %files
 /usr/local/bin/k3s
 /opt/install.sh
 /var/lib/rancher/k3s/agent/images/k3s-airgap-images-amd64.tar.zst
+
+%changelog
+* Fri May 16 2025 Rafael <32229014+rafaelbreno@users.noreply.github.com> - v1.32.5-rc1+k3s1 v1.32.5+k3s1 origin/release-1.32
+- Update to v1.32.5 (#12361)
+
+* Wed Apr 23 2025 Rafael <32229014+rafaelbreno@users.noreply.github.com> - v1.32.4+k3s1
+- Update to v1.32.4 (#12209)
+
+* Fri Mar 21 2025 Derek Nola <derek.nola@suse.com> - v1.32.3-rc4+k3s1 v1.32.3+k3s1
+- [Release-1.32] Fix upgrade test container version (#12000)
+- Fix upgrade test container version
+- Force docker test cleanup in CI
+- Bump skew test deployment times
+- Bump skew test timeout
+
+* Fri Feb 21 2025 Brad Davidson <brad.davidson@rancher.com> - v1.32.2+k3s1
+- Bump containerd for go-cni deadlock fix
+
+* Thu Jan 23 2025 Brad Davidson <brad.davidson@rancher.com> - v1.32.1+k3s1
+- Update tests
+- Also add an ordinal to subtests so its easier to figure out which one is failing
+
+* Tue Jan 7 2025 Hussein Galal <hussein.galal.ahmed.11@gmail.com> - v1.32.0+k3s1
+- Load kernel modules for nft in agent setup (#11527)
+- Initial Azure Linux import from the source project (license: same as "License" tag)
+- License verified
