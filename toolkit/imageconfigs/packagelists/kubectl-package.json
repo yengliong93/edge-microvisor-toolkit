@@ -1,0 +1,6 @@
+{
+    "packages": [
+        "kubernetes-client"
+    ],
+    "_comment": "This installs kubectl sub package located in the kubernetes spec file "
+}
