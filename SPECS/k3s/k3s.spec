@@ -1,15 +1,15 @@
-Name:           k3s
-Summary:        K3s - Lightweight Kubernetes
-Version:        v1.32.4+k3s1
-Release:        1%{?dist}
-License:        ASL 2.0
-Vendor:         Intel Corporation
-Distribution:   Edge Microvisor Toolkit
-Group:          System Environment/Base
-URL:            https://k3s.io/
-Source0: https://github.com/k3s-io/k3s/archive/refs/tags/%{version}.tar.gz
-Source1: https://github.com/k3s-io/k3s/releases/download/%{version}/k3s-airgap-images-amd64.tar.zst
-Patch0: local.patch
+Name:          k3s
+Summary:       K3s - Lightweight Kubernetes
+Version:       v1.32.4+k3s1
+Release:       1%{?dist}
+License:       ASL 2.0
+Vendor:        Intel Corporation
+Distribution:  Edge Microvisor Toolkit
+Group:         System Environment/Base
+URL:           https://k3s.io/
+Source0:       https://github.com/k3s-io/k3s/archive/refs/tags/%{version}.tar.gz
+Source1:       https://github.com/k3s-io/k3s/releases/download/%{version}/k3s-airgap-images-amd64.tar.zst
+Patch0:        local.patch
 BuildRequires: make
 BuildRequires: docker
 
@@ -19,7 +19,6 @@ K3s - Lightweight Kubernetes %{version}
 %prep
 %autosetup -Sgit
 
-# Build the K3s binary locally using the upstream Makefile target.
 %build
 make local
 
@@ -39,9 +38,6 @@ install -m 0644 %{SOURCE1} %{topdir}/var/lib/rancher/k3s/agent/images/k3s-airgap
 /var/lib/rancher/k3s/agent/images/k3s-airgap-images-amd64.tar.zst
 
 %changelog
-* Fri May 16 2025 Rafael <32229014+rafaelbreno@users.noreply.github.com> - v1.32.5+k3s1
-- Update to v1.32.5 (#12361)
-
 * Wed Apr 23 2025 Rafael <32229014+rafaelbreno@users.noreply.github.com> - v1.32.4+k3s1
 - Update to v1.32.4 (#12209)
 

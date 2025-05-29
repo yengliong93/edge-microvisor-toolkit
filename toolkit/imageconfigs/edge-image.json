@@ -52,7 +52,7 @@
                 {
                     "ID": "boot",
                     "MountPoint": "/boot/efi",
-                    "MountOptions" : "umask=0077"
+                    "MountOptions": "umask=0077"
                 },
                 {
                     "ID": "rootfs",
@@ -75,7 +75,11 @@
                 "packagelists/intel-gpu-base.json",
                 "packagelists/intel-wireless.json",
                 "packagelists/os-ab-update.json",
+<<<<<<< Updated upstream
                 "packagelists/docker.json"
+=======
+                "packagelists/k3s.json"
+>>>>>>> Stashed changes
             ],
             "AdditionalFiles": {
                 "additionalconfigs/layout.env": "/etc/layout.env",
@@ -84,13 +88,13 @@
                 "additionalconfigs/emt-cloud-init.cfg": "/etc/cloud/cloud.cfg"
             },
             "PostInstallScripts": [
-		{
-			"Path": "additionalconfigs/configure-systemd-networkd-client-identifier.sh"
-		},
-		{
-			"Path": "additionalconfigs/add-sudoer.sh"
-		}
-	    ],
+                {
+                    "Path": "additionalconfigs/configure-systemd-networkd-client-identifier.sh"
+                },
+                {
+                    "Path": "additionalconfigs/add-sudoer.sh"
+                }
+            ],
             "KernelOptions": {
                 "default": "kernel"
             },
