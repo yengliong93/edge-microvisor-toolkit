@@ -21,7 +21,7 @@ Framework - a complete integrated system providing full lifecycle management for
 your edge devices, including remote deployment and management of Kubernetes
 applications.
 
-### Edge Microvisor Toolkit Developer
+### Edge Microvisor Toolkit Developer Node
 
 To create a custom developer build of Edge Microvisor Toolkit, follow these steps:
 
@@ -47,37 +47,15 @@ To create a custom developer build of Edge Microvisor Toolkit, follow these step
 | Development       | gcc, make, python3, perl, cmake, git            |
 | Security          | openssl, gnupg, selinux, cryptsetup, tpm2-tools |
 | Filesystem        | e2fsprogs, mount                                |
-| Included in kernel | iGPU, dGPU (Intel® Arc&trade;), SRIOV, WiFi, Ethernet, Bluetooth, GPIO, UART, I2C, CAN, USB, PCIe, PWM, SATA, NVMe, MMC/SD, TPM, Manageability Engine, Power Management, Watchdog, RAS |
+| Included in kernel | iGPU, dGPU (Intel® Arc&trade;), SR-IOV, WiFi, Ethernet, Bluetooth, GPIO, UART, I2C, CAN, USB, PCIe, PWM, SATA, NVMe, MMC/SD, TPM, Manageability Engine, Power Management, Watchdog, RAS |
 
 The supported package repository offers additional `rpm` for tailoring the image
 to specific needs of container runtime, virtualization, orchestration software,
 monitoring tools, standard cloud-edge (CNCF) software, and more.
 
-### Edge Microvisor Toolkit Standalone
+### Edge Microvisor Toolkit Standalone Node
 
-[Go to Intel® Edge Software Catalog](https://edgesoftwarecatalog.intel.com/package/edge_microvisor_toolkit_standalone_node) and download a standalone Edge Node ISO installer.
-
-The standalone edge node uses the standard immutable build and provides an ISO
-image that can be flashed to a USB device and installed on edge nodes. It
-installs the microvisor and Kubernetes to the edge node with the essential
-functionality to run a single node cluster. The edge node will serve as both the
-control and worker node. Additional worker nodes can be added to the cluster
-through Kubernetes.
-
-Future releases will enable standalone edge nodes to join an existing Edge
-Management Framework backend, deployed on-prem or in the cloud to support scale
-out and management of larger infrastructures. The Standalone Edge Node enables
-you to quickly get an edge node up and running without deploying backend
-services, ready to deploy Kubernetes applicationsthrough `kubectl`, `helm`, or
-Kubernetes web dashboard.
-
-:::{admonition} The standalone edge node does not support the real-time version currently.
-:class: note
-
-The immutable OS image does not include the Kubernetes software and
-extensions. After the OS is installed, they are deployed on a writable section of the
-filesystem. Image and orchestration system updates are currently not natively enabled.
-:::
+[Go to the Edge Microvisor Toolkit Standalone Node repository](https://github.com/open-edge-platform/edge-microvisor-toolkit-standalone-node).
 
 ### Edge Microvisor Toolkit with Edge Manageability Framework
 
@@ -88,14 +66,14 @@ Manageability Framework:
 - Microvisor Immutable Image with Real Time
 
 For details on deploying Microvisor with Edge Manageability Framework, refer to
-the [Edge Manageability Framework deployment guide](../user-guide/deployment-edge-orchestrator.md).
+the [Edge Manageability Framework deployment guide](deployment-edge-orchestrator.md).
 
 ## Image Support
 
 The toolkit comes pre-configured to produce different images, the table below
 outlines the key differences between those.
 
-|  Feature         | Edge Microvisor Toolkit Developer | Edge Microvisor Toolkit Standalone & Orchestrated                                   |
+|  Feature         | Edge Microvisor Toolkit Developer Node | Edge Microvisor Toolkit Standalone Node & Orchestrated                                   |
 | -----------------| -------------------- | ------------------------------------------------- |
 | Capabilities | <ul><li>Easy to install, bootable ISO image with precompiled packages for developer evaluation.</li> <li> Includes installable rpms with TDNF for extending baseline functionality.</li> <li>Complete with toolkit to build image with an opt-in data integrity and security features.</li></ul> | <ul><li>Designed for Open Edge Platforms and can be used to onboard and provision edge nodes at scale.</li><li>Can be used independently on bare-metal and as guest OS.</li><li>Fast atomic updates & rollback support with small image footprint and short boot time.|
 | Image Type       | Mutable ISO          | Immutable RAW + VHD                               |
