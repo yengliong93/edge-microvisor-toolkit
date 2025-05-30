@@ -23,14 +23,14 @@ K3s - Lightweight Kubernetes %{version}
 make local
 
 %install
-mkdir -p %{topdir}/usr/local/bin
-install -m 0755 dist/artifacts/k3s %{topdir}/usr/local/bin/k3s
+mkdir -p %{buildroot}/usr/local/bin
+install -m 0755 dist/artifacts/k3s %{buildroot}/usr/local/bin/k3s
 
-mkdir %{topdir}/opt
-install -m 0755 install.sh %{topdir}/opt/install.sh
+mkdir %{buildroot}/opt
+install -m 0755 install.sh %{buildroot}/opt/install.sh
 
-mkdir -p %{topdir}/var/lib/rancher/k3s/agent/images
-install -m 0644 %{SOURCE1} %{topdir}/var/lib/rancher/k3s/agent/images/k3s-airgap-images-amd64.tar.zst
+mkdir -p %{buildroot}/var/lib/rancher/k3s/agent/images
+install -m 0644 %{SOURCE1} %{buildroot}/var/lib/rancher/k3s/agent/images/k3s-airgap-images-amd64.tar.zst
 
 %files
 /usr/local/bin/k3s
