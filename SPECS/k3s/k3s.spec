@@ -41,7 +41,7 @@ install -m 0644 %{SOURCE1} %{buildroot}/var/lib/rancher/k3s/agent/images/k3s-air
 * Wed Apr 23 2025 Rafael <32229014+rafaelbreno@users.noreply.github.com> - v1.32.4+k3s1
 - Update to v1.32.4 (#12209)
 
-* Fri Mar 21 2025 Derek Nola <derek.nola@suse.com> - v1.32.3-rc4+k3s1 v1.32.3+k3s1
+* Fri Mar 21 2025 Derek Nola <derek.nola@suse.com> - v1.32.3+k3s1
 - [Release-1.32] Fix upgrade test container version (#12000)
 - Fix upgrade test container version
 - Force docker test cleanup in CI
