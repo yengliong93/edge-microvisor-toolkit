@@ -11,7 +11,7 @@ Source0:       https://github.com/k3s-io/k3s/archive/refs/tags/%{version}.tar.gz
 Source1:       https://github.com/k3s-io/k3s/releases/download/%{version}/k3s-airgap-images-amd64.tar.zst#/%{name}-airgap-images-%{version}.tar.zst
 Patch0:        local.patch
 BuildRequires: make
-BuildRequires: docker
+BuildRequires: docker-cli
 
 %description
 K3s - Lightweight Kubernetes %{version}
