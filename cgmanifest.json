@@ -8341,7 +8341,7 @@
         "type": "other",
         "other": {
           "name": "k3s",
-          "version": "v1.32.4+k3s1",
+          "version": "1.32.4",
           "downloadUrl": "https://github.com/k3s-io/k3s/archive/refs/tags/v1.32.4+k3s1.tar.gz"
         }
       }
