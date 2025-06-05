@@ -1,23 +1,24 @@
 Name:          k3s
 Summary:       K3s - Lightweight Kubernetes
-Version:       v1.32.4+k3s1
+Version:       1.32.4
 Release:       1%{?dist}
 License:       ASL 2.0
 Vendor:        Intel Corporation
 Distribution:  Edge Microvisor Toolkit
 Group:         System Environment/Base
 URL:           https://k3s.io/
-Source0:       https://github.com/k3s-io/k3s/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:       https://github.com/k3s-io/k3s/releases/download/%{version}/k3s-airgap-images-amd64.tar.zst#/%{name}-airgap-images-%{version}.tar.zst
+Source0:       https://github.com/k3s-io/k3s/archive/refs/tags/v%{version}+k3s1.tar.gz#/%{name}-v%{version}.tar.gz
+Source1:       https://github.com/k3s-io/k3s/releases/download/v%{version}+k3s1/k3s-airgap-images-amd64.tar.zst#/%{name}-airgap-images-v%{version}.tar.zst
 Patch0:        local.patch
 BuildRequires: make
 BuildRequires: docker-cli
+BuildRequires: docker-buildx
 
 %description
 K3s - Lightweight Kubernetes %{version}
 
 %prep
-%autosetup -Sgit
+%setup -n %{name}-%{version}-k3s1
 
 %build
 make local
