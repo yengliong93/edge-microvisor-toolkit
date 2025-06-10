@@ -134,6 +134,7 @@ install -m 644 %{name}.pp %{buildroot}%{_datadir}/selinux/packages/%{name}.pp
 %pre
     # Create docker group if it doesn't exist
     getent group inbd >/dev/null || groupadd -r inbd
+    groupadd -r inbc
 
 
 %post
