@@ -2266,6 +2266,7 @@
                 "edge-rpm-macros",
                 "hardware-discovery-agent",
                 "inbm",
+                "intel-gpu-device-plugin",
                 "intel-igsc",
                 "intel-lms",
                 "intel-npu-firmware",
@@ -3203,6 +3204,7 @@
             "specs": [
                 "k3s",
                 "k3s-calico",
+                "k3s-multus-cni",
                 "python-nocaselist",
                 "yq"
             ]
