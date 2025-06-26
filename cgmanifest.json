@@ -7460,9 +7460,29 @@
       "component": {
         "type": "other",
         "other": {
+          "name": "intel-desktop-virtualization-k3s",
+          "version": "0.1",
+          "downloadUrl": "https://github.com/open-edge-platform/edge-desktop-virtualization/releases/download/pre-release-v0.1/intel-idv-kubevirt-v0.1.tar.gz"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "other",
+        "other": {
           "name": "intel-gmmlib",
           "version": "22.5.1",
           "downloadUrl": "https://github.com/intel/gmmlib/archive/intel-gmmlib-22.5.1.tar.gz"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "other",
+        "other": {
+          "name": "intel-idv-services",
+          "version": "0.1",
+          "downloadUrl": "https://github.com/open-edge-platform/edge-desktop-virtualization/releases/download/pre-release-v0.1/intel-idv-services-0.1.tar.gz"
         }
       }
     },
@@ -8362,7 +8382,7 @@
         "other": {
           "name": "k3s-calico",
           "version": "3.30.1",
-          "downloadUrl": "https://github.com/projectcalico/calico/releases/download/v3.30.1/release-v3.30.1.tgz"
+          "downloadUrl": "https://github.com/projectcalico/calico/archive/refs/tags/v3.30.1.tar.gz"
         }
       }
     },
