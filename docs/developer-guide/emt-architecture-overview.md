@@ -23,6 +23,88 @@ overview of key software components:
 
 ![overview of key software components](./assets/emt-architecture-key-components.drawio.svg)
 
+## Edge Microvisor Toolkit Image Versions
+
+The toolkit comes pre-configured to produce different images, the table below
+outlines the key differences between those.
+
+|  Feature         | Edge Microvisor Toolkit Developer Node | Edge Microvisor Toolkit Standalone Node & Orchestrated                                   |
+| -----------------| -------------------- | ------------------------------------------------- |
+| Capabilities | <ul><li>Easy to install, bootable ISO image with precompiled packages for developer evaluation.</li> <li> Includes installable rpms with TDNF for extending baseline functionality.</li> <li>Complete with toolkit to build image with an opt-in data integrity and security features.</li></ul> | <ul><li>Designed for Open Edge Platforms and can be used to onboard and provision edge nodes at scale.</li><li>Can be used independently on bare-metal and as guest OS.</li><li>Fast atomic updates & rollback support with small image footprint and short boot time.|
+| Image Type       | Mutable ISO          | Immutable RAW + VHD                               |
+| Update Mechanism | RPM package updates with TDNF | Image based A/B updates + Rollback       |
+| Linux Kernel     | Intel® Kernel 6.12   | Intel® Kernel 6.12                                |
+| Real time        | Available for opt-in | Image variants with standard and RT Kernel provided |
+| Desktop Virtualization | Available      | Dedicated non-RT image variant provided                                    |
+| Add-on packages  | Available for opt-in: Docker + K3s | Downloaded during installation: K3s and extensions    |
+| OS Bootloader    | GRUB                 | systemd-boot                                      |
+| Secure Boot      | Available for opt-in | Enabled                                           |
+| Full Disc Encryption | Available for opt-in | Enabled                                       |
+| dm-verity        | Available for opt-in | Enabled                                           |
+| SELinux          | Permissive           | Permissive                                        |
+
+### Developer Node mutable ISO image
+
+Mutable Developer node in an ISO format allows you to add packages and
+customize the system after deployment. During setup you can select one of four versions:
+
+- Standard kernel
+- Standard kernel - Docker and K3S provisioned during installation
+- [Kernel with real-time extensions](#preempt-rt-kernel)
+- [Kernel with real-time extensions](#preempt-rt-kernel) - Docker and K3S provisioned during installation
+
+This image is a customizable developer version that includes only essential pre-installed
+packages, providing a basic ready-to-use environment:
+
+| Item              | Details                                         |
+| ------------------| ----------------------------------------------- |
+| Packages          | approximately ~400                              |
+| Core system tools | bash, coreutils, util-linux, tar, gzip          |
+| Networking        | curl, wget, iproute2, iptables, openssh         |
+| Package Management | tdnf, rpm                                      |
+| Development       | gcc, make, python3, perl, cmake, git            |
+| Security          | openssl, gnupg, selinux, cryptsetup, tpm2-tools |
+| Filesystem        | e2fsprogs, mount                                |
+| Included in kernel | iGPU, dGPU (Intel® Arc&trade;), SR-IOV, WiFi, Ethernet, Bluetooth, GPIO, UART, I2C, CAN, USB, PCIe, PWM, SATA, NVMe, MMC/SD, TPM, Manageability Engine, Power Management, Watchdog, RAS |
+
+You can install additional RPM packages, using DNF to tailor the OS to your specific needs.
+The supported package repository offers additional `rpm` for tailoring the image
+to specific needs of container runtime, virtualization, orchestration software,
+monitoring tools, standard cloud-edge (CNCF) software, and more.
+
+Use [kernel with real-time extensions](#preempt-rt-kernel) for enhanced real-time performance
+compared to the standard kernel, if quick responses to critical events are crucial for
+your use case.
+
+### Standalone Node immutable RAW images
+
+Intel® ready-made solution for Edge AI applications. Immutable Standalone Node uses Secure
+Boot technology to protect against injecting malicious software, both at rest and during
+runtime. This image cannot be modified after deployment, providing the best security for
+your Edge Node.
+
+Download the Edge Microvisor Toolkit Standalone Node installer to your device, run it to
+create a bootable USB stick, and use that USB stick to install the EMT Standalone OS.
+
+#### Standard kernel with integrated Docker and K3S
+
+This image has integrated Docker and K3S for deploying and managing applications. The image
+uses the standard linux kernel.
+
+#### Kernel with real-time extensions, and integrated Docker and K3S
+
+This image has integrated Docker and K3S for deploying and managing applications. The image
+uses [kernel with real-time extensions](#preempt-rt-kernel), offering enhanced real-time
+performance compared to the standard kernel. Use this image if quick responses to critical
+events are crucial for your use case.
+
+#### Desktop Virtualization - standard Kernel without real-time extensions
+
+Intel® ready-made solution for using Edge Microvisor Toolkit as a host for Windows 10 or
+Ubuntu guest virtual machines. This image includes Kubevirt and Intel IDV (Intelligent
+Desktop Virtualization) services for launching the virtual machines with SR-IOV capabilities.
+This image uses the standard linux kernel.
+
 ## Edge Microvisor Toolkit Real Time
 
 To support workloads that have real-time requirements, a dedicated image is generated.
@@ -294,16 +376,19 @@ without requiring a backend.
 
 Each Bare Metal Agent is developed in `golang` and has a corresponding resource manager it
 communicates with (dial-out). Below is a brief summary of the Bare Metal Agents included in
-the build and their purpose.
+the build and their purpose. For additional information on each agent, visit the
+[Edge Node Agents](https://github.com/open-edge-platform/edge-node-agents) repository.
 
 ### Hardware Discovery Agent
 
-The hardware discovery agent is responsible for initial discovery and introspection of the
+[The hardware discovery agent](https://github.com/open-edge-platform/edge-node-agents/tree/main/hardware-discovery-agent)
+is responsible for initial discovery and introspection of the
 platform to ensure that it is provisioned and configured correctly.
 
 ### Platform Update Agent
 
-The platform update agent (PUA) is responsible for updating the edge node, particularly
+[The platform update agent (PUA)](https://github.com/open-edge-platform/edge-node-agents/tree/main/platform-update-agent)
+is responsible for updating the edge node, particularly
 performing updates during scheduled maintenance windows. For Edge Microvisor Toolkit, this
 involves:
 
@@ -317,30 +402,42 @@ the last image. Update flows are discussed in more detail in the following secti
 
 ### Node Agent
 
-The node agent is responsible for configuration aspects related to platform functions on the
+[The node agent](https://github.com/open-edge-platform/edge-node-agents/tree/main/node-agent)
+is responsible for configuration aspects related to platform functions on the
 edge node. It also assists the onboarding process by providing JWT (JSON Web Tokens) to the
 other Bare Metal Agents.
 
 ### Cluster Agent
 
-The cluster agents are responsible for installation and formation of the Kubernetes cluster,
+[The cluster agents](https://github.com/open-edge-platform/edge-node-agents/tree/main/cluster-agent)
+are responsible for installation and formation of the Kubernetes cluster,
 which may involve one or more edge nodes. The Kubernetes software, and associated extensions
 (scheduler extensions, device plugins, network extensions, etc.) are **not** included in the
 microvisor image itself, but installed on a writable portion of the filesystem.
 
 ### Telemetry Agent
 
-The telemetry agent provides the configuration plane for telemetry collected from the edge
+[The telemetry agent](https://github.com/open-edge-platform/edge-node-agents/tree/main/platform-telemetry-agent)
+provides the configuration plane for telemetry collected from the edge
 node, including metrics and logs. It enables collection of various telemetry data, as well as
 configuration of scraping intervals and caching policies.
 
 ### Observability Agent
 
-The observability agent provides the data plane portion of telemetry data. It uses
+[The observability agent](https://github.com/open-edge-platform/edge-node-agents/tree/main/platform-observability-agent)
+provides the data plane portion of telemetry data. It uses
 configuration provided by the telemetry agent and uses  `Fluent Bit`, `Telegraf`,
 `OpenTelemetry`, and other standard Cloud Native Computing Foundation (CNCF) projects to
 collect, process, and transmit telemetry data to the backend for further processing and
 visualization purposes.
+
+### Reporting Agent
+
+[The reporting agent](https://github.com/open-edge-platform/edge-node-agents/tree/main/reporting-agent)
+collects system information and metrics from Open Edge Platform
+installations. It gathers data from a variety of sources, including `lscpu`, `lsblk`,
+`lshw`, `dmidecode`, and `kubectl`, to provide a comprehensive insight into hardware, software,
+and runtime environment.
 
 ## Atomic Updates
 
@@ -414,4 +511,3 @@ providing the path to the downloaded image.
 > **Note:**
   Future versions of Edge Microvisor Toolkit will implement automatic image validation,
   update checks, and releases.
-

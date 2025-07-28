@@ -1,7 +1,7 @@
 {
     "SystemConfigs": [
 	{
-            "Name": "Edge Microvisor Toolkit Base with RT Kernel + Docker",
+            "Name": "RT Kernel + Docker",
             "PackageLists": [
                 "packagelists/grub2-mkconfig.json",
                 "packagelists/developer-packages.json",
@@ -11,9 +11,11 @@
                 "packagelists/ssh-server.json",
                 "packagelists/selinux-full.json",
                 "packagelists/intel-gpu-base-rt.json",
+                "packagelists/intel-rdt.json",
                 "packagelists/drtm.json",
                 "packagelists/virt-guest-packages.json",
-		"packagelists/docker.json"
+                "packagelists/docker.json",
+		"packagelists/intel-wireless.json"
             ],
             "KernelCommandLine": {
                 "SELinux": "permissive"
@@ -31,7 +33,7 @@
             ]
         },
 	{
-            "Name": "Edge Microvisor Toolkit Base with Standard Kernel + Docker",
+            "Name": "Standard Kernel + Docker",
             "PackageLists": [
                 "packagelists/grub2-mkconfig.json",
                 "packagelists/developer-packages.json",
@@ -43,7 +45,8 @@
                 "packagelists/intel-gpu-base.json",
                 "packagelists/drtm.json",
                 "packagelists/virt-guest-packages.json",
-	        "packagelists/docker.json"
+	        "packagelists/docker.json",
+		"packagelists/intel-wireless.json"
             ],
             "KernelCommandLine": {
                 "SELinux": "permissive"
@@ -61,7 +64,7 @@
             ]
         },
         {
-	    "Name": "Edge Microvisor Toolkit Base with RT Kernel",
+		"Name": "RT Kernel",
             "PackageLists": [
                 "packagelists/grub2-mkconfig.json",
                 "packagelists/developer-packages.json",
@@ -71,8 +74,10 @@
                 "packagelists/ssh-server.json",
                 "packagelists/selinux-full.json",
                 "packagelists/intel-gpu-base-rt.json",
+                "packagelists/intel-rdt.json",
                 "packagelists/drtm.json",
-                "packagelists/virt-guest-packages.json"
+                "packagelists/virt-guest-packages.json",
+                "packagelists/intel-wireless.json"
             ],
             "KernelCommandLine": {
                 "SELinux": "permissive"
@@ -90,7 +95,7 @@
             ]
         },
 	{
-            "Name": "Edge Microvisor Toolkit Base with Standard Kernel",
+            "Name": "Standard Kernel",
             "PackageLists": [
                 "packagelists/grub2-mkconfig.json",
                 "packagelists/developer-packages.json",

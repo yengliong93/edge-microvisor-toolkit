@@ -1,0 +1,20 @@
+{
+    "packages": [
+        "caddy",
+        "containerd2-core",
+        "cryptsetup",
+        "device-discovery",
+        "dracut-tmpfsroot",
+        "efibootmgr",
+        "fluent-bit",
+        "gawk",
+        "lvm2",
+        "net-tools",
+        "parted",
+        "rng-tools",
+        "tar",
+        "tink-worker",
+        "veritysetup",
+        "yq"
+    ]
+}

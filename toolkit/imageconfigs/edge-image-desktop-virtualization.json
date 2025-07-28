@@ -2,7 +2,7 @@
     "Disks": [
         {
             "PartitionTableType": "gpt",
-            "MaxSize": 4096,
+            "MaxSize": 13312,
             "Artifacts": [
                 {
                     "Name": "edge-readonly-dv",
@@ -30,14 +30,14 @@
                     "Name": "rootfs",
                     "ID": "rootfs",
                     "Start": 300,
-                    "End": 3536,
+                    "End": 4048,
                     "FsType": "ext4",
                     "Type": "linux-root-amd64"
                 },
                 {
                     "Name": "edge_persistent",
                     "ID": "opt",
-                    "Start": 3536,
+                    "Start": 4048,
                     "End": 0,
                     "FsType": "ext4"
                 }
@@ -76,9 +76,14 @@
                 "packagelists/fde-verity-package.json",
                 "packagelists/selinux-full.json",
                 "packagelists/intel-gpu-base.json",
+                "packagelists/intel-wireless.json",
                 "packagelists/os-ab-update.json",
-                "packagelists/docker.json",
-                "packagelists/fs-tools.json"
+                "packagelists/helm.json",
+                "packagelists/fs-tools.json",
+                "packagelists/intel-idv-services.json"
+            ],
+            "Packages": [
+                "igt-gpu-tools"
             ],
             "AdditionalFiles": {
                 "additionalconfigs/layout.env": "/etc/layout.env",
@@ -106,7 +111,7 @@
                 }
             ],
             "KernelCommandLine": {
-                "ExtraCommandLine": "quiet splash sysctl.vm.overcommit_memory=1 sysctl.kernel.panic=10 sysctl.kernel.panic_on_oops=1 sysctl.fs.inotify.max_user_instances=8192 rd.shell=0 rd.timeout=200 rd.emergency=reboot udmabuf.list_limit=8192 i915.enable_guc=3 i915.max_vfs=7 intel_iommu=on iommu=pt i915.force_probe=*",
+                "ExtraCommandLine": "quiet splash sysctl.vm.overcommit_memory=1 sysctl.kernel.panic=10 sysctl.kernel.panic_on_oops=1 sysctl.fs.inotify.max_user_instances=8192 rd.shell=0 rd.timeout=200 rd.emergency=reboot udmabuf.list_limit=8192 i915.enable_guc=3 i915.max_vfs=7 intel_iommu=on i915.force_probe=*",
             "SELinux": "permissive"
             },
             "Hostname": "EdgeMicrovisorToolkit",

@@ -4,12 +4,7 @@ Edge Microvisor Toolkit is a lightweight, container-first Linux distribution,
 optimized for Intel® architecture. It provides a secure and high-performing
 environment for deploying edge workloads across multiple deployment models.
 
-This section provides an overview of both the operating system and build
-pipelines. Once you have decided on the usage scenarios presented below, you can
-move on to:
-
-- [Build a new Edge Microvisor Toolkit Image.](./get-started/emt-building-howto.md)
-- [Install Edge Microvisor Toolkit from existing image.](./get-started/emt-installation-howto.md)
+[Hardware and Software Requirements](./emt-system-requirements.md)
 
 ## Usage Scenarios
 
@@ -21,39 +16,19 @@ Framework - a complete integrated system providing full lifecycle management for
 your edge devices, including remote deployment and management of Kubernetes
 applications.
 
-### Edge Microvisor Toolkit Developer Node
+[Choose pre-configured Edge Microvisor Toolkit Image](./emt-architecture-overview.md#edge-microvisor-toolkit-image-versions)
 
-To create a custom developer build of Edge Microvisor Toolkit, follow these steps:
+[Build Your Own Edge Microvisor Toolkit](./get-started/emt-building-howto.md)
 
-- [Download the mutable host ISO image](https://files-rs.edgeorchestration.intel.com/files-edge-orch/microvisor/iso/EdgeMicrovisorToolkit-3.0.iso) from
-  Intel® Edge Software Catalog.
-- Install the mutable host via ISO image that includes only essential pre-installed packages,
-  providing a ready-to-use base environment.
-- Install additional RPM packages, using DNF to tailor the OS to your specific needs.
-- Update installed RPMs regularly to stay up-to-date in the OS in terms of package updates,
-  kernel updates, security vulnerability fixes and bug fixes.
-- Use the OS toolkit and available packages to build a custom OS image, which enables you to:
-  - Configure the system for specialized workloads or environments.
-  - Experiment with simplified or enhanced configurations tailored for your specific workloads.
-  - Explore - use built-in monitoring tools to track system performance, resource
-    usage, and log data for deeper insights into operational behavior.
+## Install Edge Microvisor Toolkit
 
-| Item              | Details                                         |
-| ------------------| ----------------------------------------------- |
-| Packages          | approximately ~400                              |
-| Core system tools | bash, coreutils, util-linux, tar, gzip          |
-| Networking        | curl, wget, iproute2, iptables, openssh         |
-| Package Management | tdnf, rpm                                      |
-| Development       | gcc, make, python3, perl, cmake, git            |
-| Security          | openssl, gnupg, selinux, cryptsetup, tpm2-tools |
-| Filesystem        | e2fsprogs, mount                                |
-| Included in kernel | iGPU, dGPU (Intel® Arc&trade;), SR-IOV, WiFi, Ethernet, Bluetooth, GPIO, UART, I2C, CAN, USB, PCIe, PWM, SATA, NVMe, MMC/SD, TPM, Manageability Engine, Power Management, Watchdog, RAS |
+[Bare Metal Installation](./get-started/deployment/emt-bare-metal.md)
 
-The supported package repository offers additional `rpm` for tailoring the image
-to specific needs of container runtime, virtualization, orchestration software,
-monitoring tools, standard cloud-edge (CNCF) software, and more.
+[Virtual Machine Installation](./get-started/deployment/emt-vm-guest.md)
 
-### Edge Microvisor Toolkit Standalone Node
+## Host Guest VMs under Edge Microvisor Toolkit
+
+[Deploying Other OS as Guest Virtual Machines under EMT Host](./get-started/deployment/emt-vm-host.md)
 
 [Go to the Edge Microvisor Toolkit Standalone Node repository](https://github.com/open-edge-platform/edge-microvisor-toolkit-standalone-node).
 
@@ -79,7 +54,8 @@ outlines the key differences between those.
 | Image Type       | Mutable ISO          | Immutable RAW + VHD                               |
 | Update Mechanism | RPM package updates with TDNF | Image based A/B updates + Rollback       |
 | Linux Kernel     | Intel® Kernel 6.12   | Intel® Kernel 6.12                                |
-| Real time        | No                   | Two images provided one RT kernel and one without |
+| Real time        | Available for opt-in | Two images provided: one with RT kernel and one without |
+| Add-on packages  | Available for opt-in: Docker + K3s | Built into image: Docker + K3s |
 | OS Bootloader    | GRUB                 | systemd-boot                                      |
 | Secure Boot      | Available for opt-in | Enabled                                           |
 | Full Disc Encryption | Available for opt-in | Enabled                                       |
