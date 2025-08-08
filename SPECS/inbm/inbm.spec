@@ -72,7 +72,7 @@ install -m 755 %{_builddir}/%{name}-%{version}/build/inbc %{buildroot}%{_bindir}
 install -m 755 %{_builddir}/%{name}-%{version}/fpm-templates/usr/lib/systemd/system/inbd.service %{buildroot}%{_unitdir}/inbd.service
 
 # Install schema
-install -m 755 %{_builddir}/%{name}-%{version}/fpm-templates/usr/share/inbd_schema.json %{buildroot}%{_datadir}/inbd_schema.json
+install -m 644 %{_builddir}/%{name}-%{version}/fpm-templates/usr/share/inbd_schema.json %{buildroot}%{_datadir}/inbd_schema.json
 
 # Modify inbd service file to add it into bm-agents group
 sed -i '/^Group=inbd$/a SupplementaryGroups=bm-agents' %{buildroot}%{_unitdir}/inbd.service
