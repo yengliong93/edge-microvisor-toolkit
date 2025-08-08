@@ -83,7 +83,7 @@ install -D -m 0755 %{_builddir}/%{name}-%{version}/fpm-templates/usr/bin/provisi
 # Configure INBM for Edge Microvisor Toolkit specific needs
 
 # Copy intel_manageability.conf over the existing one
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/intel_manageability.conf
+install -D -m 0640 %{SOURCE1} %{buildroot}%{_sysconfdir}/intel_manageability.conf
 # Copy inbm-configuration-replace-FQDN.sh 
 FQDN_REPLACE_SCRIPT_PATH_TARGET=%{_bindir}/inbm-configuration-replace-FQDN.sh
 FQDN_REPLACE_SCRIPT_PATH_BUILD=%{buildroot}$FQDN_REPLACE_SCRIPT_PATH_TARGET
